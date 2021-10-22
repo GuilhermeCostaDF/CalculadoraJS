@@ -42,3 +42,17 @@ const selecionarOperador = (evento) =>{
 }
 /*Adiciona o evento click em cada objeto do nosso array operadores*/
 operadores.forEach(operador => operador.addEventListener('click', selecionarOperador));
+
+const ativarIgual = () =>{
+    calcular();
+    operador = undefined;
+}
+
+const limparDisplay = () => display.textContent ='';
+
+document.getElementById('resultadoOperacao').addEventListener('click', ativarIgual);
+
+document.getElementById('limparDisplay').addEventListener('click', limparDisplay)
+
+
+
