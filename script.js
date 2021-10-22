@@ -48,7 +48,12 @@ const ativarIgual = () =>{
     operador = undefined;
 }
 
-const limparDisplay = () => display.textContent ='';
+const limparDisplay = () => {
+    display.textContent ='';
+    operador = undefined;
+    novoNumero=true;
+    numeroAnterior=undefined;
+}
 
 document.getElementById('resultadoOperacao').addEventListener('click', ativarIgual);
 
