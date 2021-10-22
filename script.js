@@ -12,7 +12,7 @@ const operacaoPendente = () => operador !== undefined;
 
 const calcular = () =>{
     if(operacaoPendente()){
-        const numeroAtual = Number(display.textContent);
+        const numeroAtual = Number(display.textContent.replace(',','.'));
         novoNumero = true;
 
         const resultado = eval (`${numeroAnterior}${operador}${numeroAtual}`);
@@ -22,7 +22,7 @@ const calcular = () =>{
 
 const atualizarDisplay = (texto) => {
     if(novoNumero){
-        display.textContent = texto;
+        display.textContent = texto.toLocaleString('BR');
         novoNumero = false;
     }else{
         display.textContent += texto;
@@ -37,7 +37,7 @@ const selecionarOperador = (evento) =>{
         calcular();
         novoNumero = true;
         operador = evento.target.textContent;
-        numeroAnterior = Number(display.textContent);
+        numeroAnterior = Number(display.textContent.replace(',','.'));
     }
 }
 /*Adiciona o evento click em cada objeto do nosso array operadores*/
@@ -55,9 +55,23 @@ const limparDisplay = () => {
     numeroAnterior=undefined;
 }
 
+const existeDecimal = () => display.textContent.indexOf(',') != -1;
+const existeValor = () => display.textContent.length > 0;
+
+const inserirDecimal = () =>{
+    if(!existeDecimal()){
+        if(existeValor()){
+            atualizarDisplay(',');
+        }
+        else{
+            atualizarDisplay('0,');
+        }
+    }
+}
+
 document.getElementById('resultadoOperacao').addEventListener('click', ativarIgual);
 
 document.getElementById('limparDisplay').addEventListener('click', limparDisplay)
 
-
+document.getElementById('decimal').addEventListener('click', inserirDecimal )
 
