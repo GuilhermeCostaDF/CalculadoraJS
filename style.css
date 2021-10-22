@@ -67,6 +67,13 @@ button.symbols-buttons{
     font-size: 24px;
 }
 
+button.result{
+    color: #EEEEEE;
+    background-color: #2d886a;
+    border: none;
+    font-size: 40px;
+}
+
 footer, span{
     color: white;
     margin-top: 30px;
